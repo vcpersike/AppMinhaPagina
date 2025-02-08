@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+/bin/
+/obj/
+
+../AppMinhaPagina.Shared/bin/
+../AppMinhaPagina.Shared/obj/
