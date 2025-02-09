@@ -25,24 +25,24 @@ jobs:
       with:
         context: '{{defaultContext}}'
         push: true
-        tags: devvictorpersike/kaban-trello:latest, devvictorpersike/kaban-trello:${{ github.run_number }}
+        tags: devvictorpersike/appminhapagina:latest, devvictorpersike/appminhapagina:${{ github.run_number }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_RSA_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+    # - name: Setup SSH
+    #   run: |
+    #     mkdir -p ~/.ssh
+    #     echo "${{ secrets.SSH_RSA_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+    #     chmod 600 ~/.ssh/id_rsa
+    #     ssh-keyscan "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
-    - name: Test SSH connection
-      run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" "echo 'SSH connection successful'"
+    # - name: Test SSH connection
+    #   run: |
+    #       ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" "echo 'SSH connection successful'"
 
-    - name: Execute deploy script on Oracle VM
-      run: |
-        ssh "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" '/home/ubuntu/frontend/script/deploy-kaban.sh'
+    # - name: Execute deploy script on Oracle VM
+    #   run: |
+    #     ssh "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" '/home/ubuntu/frontend/script/deploy-kaban.sh'
