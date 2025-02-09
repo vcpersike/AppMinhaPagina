@@ -58,7 +58,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_RSA_PRIVATE_KEY }}
           source: "deploy/docker-compose.yml"
-          target: "/home/ubuntu/frontends/"
+          target: "/home/ubuntu/frontends/deploy"
 
       # 8) Executar no servidor: docker compose pull/up
       - name: Deploy on Oracle VM
@@ -68,6 +68,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_RSA_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/frontends/deploy/
+            cd /home/ubuntu/frontends/deploy
             docker compose pull
             docker compose up -d
