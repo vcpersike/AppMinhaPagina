@@ -6,7 +6,7 @@ namespace AppMinhaPagina.Shared.Components
     {
         public List<string> Skills { get; set; } = new()
         {
-            "C#", "Angular", "React", "Docker", "Azure DevOps", "DDD", "SOLID", "GO"
+            "C#", "Angular", "React", "Docker", "Azure DevOps", "DDD", "SOLID", "GO", "Observabilidade"
         };
     }
 }
