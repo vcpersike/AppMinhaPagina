@@ -1,0 +1,18 @@
+﻿@page "/login"
+
+<h3>Login</h3>
+
+<InputField @bind-Value="Username" Placeholder="Usuário" />
+<InputField @bind-Value="Password" Type="password" Placeholder="Senha" />
+
+<DefaultButton Text="Entrar" OnClick="LoginUser" />
+
+@code {
+    private string Username { get; set; } = "";
+    private string Password { get; set; } = "";
+
+    private void LoginUser()
+    {
+        Console.WriteLine($"Tentando logar com {Username}");
+    }
+}

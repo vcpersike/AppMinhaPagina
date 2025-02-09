@@ -1,0 +1,16 @@
+﻿<button class="default-btn" @onclick="HandleClick">
+    @Text
+</button>
+
+@code {
+    [Parameter] public string Text { get; set; } = "Botão"; // Definição de valor padrão
+    [Parameter] public EventCallback OnClick { get; set; }
+
+    private async Task HandleClick()
+    {
+        if (OnClick.HasDelegate)
+        {
+            await OnClick.InvokeAsync();
+        }
+    }
+}

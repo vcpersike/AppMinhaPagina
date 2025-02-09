@@ -1,0 +1,13 @@
+﻿@code {
+    public List<string> Skills { get; set; } = new()
+    {
+        "C#", "Angular", "React", "Docker", "Azure DevOps", "DDD", "SOLID"
+    };
+}
+
+<div class="skills-container">
+    @foreach (var skill in Skills)
+    {
+        <span class="skill-badge">@skill</span>
+    }
+</div>
