@@ -1,5 +1,4 @@
 ﻿@page "/"
-@using AppMinhaPagina.Shared.Models
 
 <h1>Meu Currículo</h1>
 
@@ -10,23 +9,3 @@
 
 <h2>Habilidades</h2>
 <SkillList />
-
-@code {
-    private List<Experience> MyExperiences = new()
-    {
-        new Experience
-        {
-            Empresa = "Ingram Micro",
-            Cargo = "Desenvolvedor Full-Stack",
-            Periodo = "10/23 - Atual",
-            Descricao = "Atuo na squad de contabilidade, desenvolvendo soluções em C#, React e Azure."
-        },
-        new Experience
-        {
-            Empresa = "Totvs Meu Protheus",
-            Cargo = "Desenvolvedor Mobile",
-            Periodo = "07/23 - 02/24",
-            Descricao = "Desenvolvimento de apps móveis com Angular 15 e Ionic, integrando Firebase."
-        }
-    };
-}

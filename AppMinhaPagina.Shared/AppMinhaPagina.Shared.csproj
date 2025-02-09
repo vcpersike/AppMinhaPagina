@@ -7,11 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Login.razor" />
+    <Content Remove="wwwroot\css\ExperienceCard.css" />
+    <Content Remove="wwwroot\css\ProfileCard.css" />
+    <Content Remove="wwwroot\css\SkillList.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
 </Project>
