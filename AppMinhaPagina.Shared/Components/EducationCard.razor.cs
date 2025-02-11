@@ -4,7 +4,7 @@ using AppMinhaPagina.Shared.Models;
 
 namespace AppMinhaPagina.Shared.Components
 {
-    public partial class EducationCard
+    public partial class EducationCard : ComponentBase
     {
         [Parameter] public List<Education> Educations { get; set; } = new();
     }
