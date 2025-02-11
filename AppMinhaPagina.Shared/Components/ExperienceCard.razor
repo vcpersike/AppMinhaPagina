@@ -1,16 +1,19 @@
 ﻿@using AppMinhaPagina.Shared.Models
 
 <div class="experience-container">
-    @foreach (var exp in Experiences)
+    @if (Experiences == null || !Experiences.Any())
     {
-        <div class="experience-card">
-            <h3>@exp.Cargo - @exp.Empresa</h3>
-            <span>@exp.Periodo</span>
-            <p>@exp.Descricao</p>
-        </div>
+        <p>Nenhuma experiência disponível.</p>
+    }
+    else
+    {
+        @foreach (var exp in Experiences)
+        {
+            <div class="experience-card">
+                <h3>@exp.Cargo - @exp.Empresa</h3>
+                <span>@exp.Periodo</span>
+                <p>@exp.Descricao</p>
+            </div>
+        }
     }
 </div>
-
-@code {
-    [Parameter] public List<Experience> Experiences { get; set; } = new();
-}

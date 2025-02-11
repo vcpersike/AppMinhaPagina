@@ -1,0 +1,20 @@
+﻿@inherits EducationCard
+@using AppMinhaPagina.Shared.Models
+
+<div class="education-container">
+    @if (Educations == null || !Educations.Any())
+    {
+        <p>Nenhuma formação disponível.</p>
+    }
+    else
+    {
+        @foreach (var edu in Educations)
+        {
+            <div class="education-card">
+                <h3>@edu.Curso - @edu.Instituicao</h3>
+                <span>@edu.Periodo</span>
+                <p>@edu.Descricao</p>
+            </div>
+        }
+    }
+</div>
