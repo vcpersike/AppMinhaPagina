@@ -1,5 +1,5 @@
 services:
-  kaban-trello-web:
+  appminhapagina:
     build:
       context: .
       dockerfile: Dockerfile
