@@ -1,0 +1,21 @@
+﻿@using AppMinhaPagina.Shared.Models
+@using AppMinhaPagina.Shared.Components.Molecules.Card
+
+<section class="education-section">
+    <h2>Educação</h2>
+    @if (Educations == null || !Educations.Any())
+    {
+        <p>Carregando educação...</p>
+    }
+    else
+    {
+        @foreach (var edu in Educations)
+        {
+            <EducationCard Education="edu" />
+        }
+    }
+</section>
+
+@code {
+    [Parameter] public List<Education> Educations { get; set; } = new();
+}

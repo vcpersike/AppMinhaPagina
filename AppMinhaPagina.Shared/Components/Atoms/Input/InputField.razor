@@ -1,0 +1,7 @@
+﻿<input type="@Type" class="input-field" placeholder="@Placeholder" @bind-value="Value" />
+
+@code {
+    [Parameter] public string Type { get; set; } = "text";
+    [Parameter] public string Placeholder { get; set; } = "Digite aqui...";
+    [Parameter] public string Value { get; set; }
+}

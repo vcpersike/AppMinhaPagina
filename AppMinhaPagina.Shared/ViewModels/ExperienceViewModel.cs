@@ -12,7 +12,7 @@ namespace AppMinhaPagina.Shared.ViewModels
 
         public ExperienceViewModel()
         {
-            _experienceService = new ExperienceService(); // Dependência pode ser injetada futuramente
+            _experienceService = new ExperienceService();
         }
 
         public async Task LoadExperiencesAsync()

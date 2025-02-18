@@ -1,29 +1,13 @@
 ﻿@page "/"
-@using AppMinhaPagina.Shared.Components
+@using AppMinhaPagina.Shared.Components.Organisms.Sections
 
 <h1>Meu Currículo</h1>
 
 <ProfileCard />
 
-<h2>Experiências</h2>
-@if (ExperienceVM.Experiences.Count == 0)
-{
-    <p>Carregando experiências...</p>
-}
-else
-{
-    <ExperienceCard Experiences="ExperienceVM.Experiences.ToList()" />
-}
+<ExperienceSection Experiences="ExperienceVM.Experiences.ToList()" />
 
-<h2>Educação</h2>
-@if (EducationVM.Educations.Count == 0)
-{
-    <p>Carregando educação...</p>
-}
-else
-{
-    <EducationCard Educations="EducationVM.Educations.ToList()" />
-}
+<EducationSection Educations="EducationVM.Educations.ToList()" />
 
 <h2>Habilidades</h2>
 <SkillList />

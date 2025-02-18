@@ -1,6 +1,7 @@
 ﻿@using AppMinhaPagina.Shared.Models
 
-<div class="experience-container">
+<section class="experience-section">
+    <h2>Experiências</h2>
     @if (Experiences == null || !Experiences.Any())
     {
         <p>Nenhuma experiência disponível.</p>
@@ -9,11 +10,11 @@
     {
         @foreach (var exp in Experiences)
         {
-            <div class="experience-card">
-                <h3>@exp.Cargo - @exp.Empresa</h3>
-                <span>@exp.Periodo</span>
-                <p>@exp.Descricao</p>
-            </div>
+            <ExperienceCard Experience="exp" />
         }
     }
-</div>
+</section>
+
+@code {
+    [Parameter] public List<Experience> Experiences { get; set; } = new();
+}
