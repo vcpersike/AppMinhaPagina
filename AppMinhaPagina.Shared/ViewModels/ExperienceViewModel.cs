@@ -33,7 +33,7 @@ public class ExperienceViewModel : INotifyPropertyChanged
         var data = await _experienceService.GetExperiencesAsync();
         if (data is not null && data.Count > 0)
         {
-            Experiences = data; // Atualiza a UI automaticamente
+            Experiences = data;
         }
     }
 
