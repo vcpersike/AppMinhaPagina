@@ -10,23 +10,18 @@
 <EducationList EducationItems="@educationViewModel.EducationList" />
 
 <h2>Habilidades</h2>
-<div class="skills">
-    <SkillChart SkillName="C#" SkillLevel="60" />
-    <SkillChart SkillName="React" SkillLevel="80" />
-    <SkillChart SkillName="Blazor" SkillLevel="50" />
-    <SkillChart SkillName="Azure" SkillLevel="30" />
-</div>
-
-
+<SkillList />
 
 @code {
     [Inject] private ExperienceViewModel experienceViewModel { get; set; }
     [Inject] private EducationViewModel educationViewModel { get; set; }
+    [Inject] private SkillViewModel skillViewModel { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         await experienceViewModel.LoadExperiencesAsync();
         await educationViewModel.LoadEducationAsync();
+        await skillViewModel.LoadSkillsAsync();
         InvokeAsync(StateHasChanged);
     }
 }

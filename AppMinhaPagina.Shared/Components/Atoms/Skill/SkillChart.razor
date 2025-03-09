@@ -1,26 +1,19 @@
 ﻿<div class="skill-chart">
     <svg width="80" height="80" viewBox="0 0 36 36">
-        <circle class="skill-bg" cx="18" cy="18" r="15.5" transform="rotate(90 18 18)" />
-
+        <circle class="skill-bg" cx="18" cy="18" r="15.5" />
         <circle class="skill-progress"
                 cx="18"
                 cy="18"
                 r="15.5"
                 stroke-dasharray="100, 100"
-                stroke-dashoffset="@GetStrokeOffset(SkillLevel)"
-                transform="rotate(90 18 18)" />
-
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">@SkillLevel%</text>
+                stroke-dashoffset="@GetStrokeOffset(Skill.Level)" />
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">@Skill.Level%</text>
     </svg>
-    <p>@SkillName</p>
+    <p>@Skill.Name</p>
 </div>
 
 @code {
-    [Parameter] public string SkillName { get; set; } = "C#";
-    [Parameter] public int SkillLevel { get; set; } = 60;
+    [Parameter] public SkillModel Skill { get; set; }
 
-    private double GetStrokeOffset(int level)
-    {
-        return 100 - level;
-    }
+    private double GetStrokeOffset(int level) => 100 - level;
 }

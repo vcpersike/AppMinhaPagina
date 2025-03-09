@@ -8,3 +8,10 @@ h3 {
     color: #333;
 }
 
+.skills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+}

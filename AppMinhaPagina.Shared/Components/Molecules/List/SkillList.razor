@@ -1,0 +1,22 @@
+﻿<div class="skills">
+    @if (ViewModel.Skills is not null && ViewModel.Skills.Count > 0)
+    {
+        @foreach (var skill in ViewModel.Skills)
+        {
+            <SkillChart Skill="skill" />
+        }
+    }
+    else
+    {
+        <p>Carregando habilidades...</p>
+    }
+</div>
+
+@code {
+    [Inject] private SkillViewModel ViewModel { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadSkillsAsync();
+    }
+}
