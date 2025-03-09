@@ -18,6 +18,6 @@
     protected override async Task OnInitializedAsync()
     {
         await ViewModel.LoadEducationAsync();
-        InvokeAsync(StateHasChanged);
+        await InvokeAsync(StateHasChanged);
     }
 }

@@ -16,6 +16,6 @@
     protected override async Task OnInitializedAsync()
     {
         await ViewModel.LoadExperiencesAsync();
-        InvokeAsync(StateHasChanged);
+        await InvokeAsync(StateHasChanged);
     }
 }

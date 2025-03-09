@@ -13,15 +13,15 @@
 <SkillList />
 
 @code {
-    [Inject] private ExperienceViewModel experienceViewModel { get; set; }
-    [Inject] private EducationViewModel educationViewModel { get; set; }
-    [Inject] private SkillViewModel skillViewModel { get; set; }
+    [Inject] private ExperienceViewModel experienceViewModel { get; set; } = default!;
+    [Inject] private EducationViewModel educationViewModel { get; set; } = default!;
+    [Inject] private SkillViewModel skillViewModel { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
         await experienceViewModel.LoadExperiencesAsync();
         await educationViewModel.LoadEducationAsync();
         await skillViewModel.LoadSkillsAsync();
-        InvokeAsync(StateHasChanged);
+        await InvokeAsync(StateHasChanged);
     }
 }

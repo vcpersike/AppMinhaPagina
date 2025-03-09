@@ -33,11 +33,11 @@ public class EducationViewModel : INotifyPropertyChanged
         var data = await _educationService.GetEducationAsync();
         if (data is not null && data.Count > 0)
         {
-            EducationList = data; // Atualiza a UI automaticamente
+            EducationList = data;
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

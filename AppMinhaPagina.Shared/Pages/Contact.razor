@@ -21,6 +21,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         await ViewModel.LoadContactAsync();
-        InvokeAsync(StateHasChanged);
+        await InvokeAsync(StateHasChanged);
     }
 }

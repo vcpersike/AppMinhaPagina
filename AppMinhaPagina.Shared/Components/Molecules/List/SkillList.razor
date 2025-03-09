@@ -13,7 +13,7 @@
 </div>
 
 @code {
-    [Inject] private SkillViewModel ViewModel { get; set; }
+    [Inject] private SkillViewModel ViewModel { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {

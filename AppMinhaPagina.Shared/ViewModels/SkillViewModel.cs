@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using AppMinhaPagina.Shared.Models;
 using AppMinhaPagina.Shared.Services.Interface;
 
-
-
 public class SkillViewModel : INotifyPropertyChanged
 {
     private readonly ISkillService _skillService;
@@ -18,8 +16,11 @@ public class SkillViewModel : INotifyPropertyChanged
         get => _skills;
         set
         {
-            _skills = value;
-            OnPropertyChanged(nameof(Skills));
+            if (_skills != value)
+            {
+                _skills = value;
+                OnPropertyChanged(nameof(Skills));
+            }
         }
     }
 
@@ -30,11 +31,14 @@ public class SkillViewModel : INotifyPropertyChanged
 
     public async Task LoadSkillsAsync()
     {
-        Skills = await _skillService.GetSkillsAsync();
-        OnPropertyChanged(nameof(Skills));
+        var skillsData = await _skillService.GetSkillsAsync();
+        if (skillsData is not null && skillsData.Count > 0)
+        {
+            Skills = skillsData;
+        }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

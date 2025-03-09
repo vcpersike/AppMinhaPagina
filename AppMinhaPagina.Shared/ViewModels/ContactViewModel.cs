@@ -9,7 +9,7 @@ public class ContactViewModel : INotifyPropertyChanged
 {
     private readonly IContactService _contactService;
 
-    private ContactModel _contact;
+    private ContactModel _contact = new();
     public ContactModel Contact
     {
         get => _contact;
@@ -33,7 +33,7 @@ public class ContactViewModel : INotifyPropertyChanged
         Contact = await _contactService.GetContactAsync();
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
