@@ -1,0 +1,54 @@
+﻿@page "/experience"
+@inject ExperienceViewModel ViewModel
+
+<PageTitle>Experiência</PageTitle>
+
+<h1>Minhas Experiências</h1>
+
+<h2>Debugging</h2>
+<p>✅ ViewModel carregado corretamente.</p>
+<p>Experiências carregadas: @ViewModel.Experiences.Count</p>
+
+<h2>Lista de Experiências (Renderização Direta)</h2>
+
+@if (ViewModel.Experiences is not null && ViewModel.Experiences.Count > 0)
+{
+    @foreach (var exp in ViewModel.Experiences)
+    {
+        <div class="experience-card">
+            <h3>@exp.Role</h3>
+            <h4>@exp.Company (@exp.Period)</h4>
+            <p>@exp.Description</p>
+        </div>
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma experiência disponível.</p>
+}
+
+<h2>Lista de Experiências</h2>
+
+@if (ViewModel.Experiences is not null && ViewModel.Experiences.Count > 0)
+{
+    @foreach (var exp in ViewModel.Experiences)
+    {
+        <CardExperience Experience="@exp" />
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma experiência disponível.</p>
+}
+<ButtonDefault />
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("🔍 Chamando LoadExperiences()...");
+        ViewModel.LoadExperiences();
+        await Task.Delay(500);
+        Console.WriteLine($"✅ Dados carregados: {ViewModel.Experiences?.Count}");
+        InvokeAsync(StateHasChanged);
+    }
+}

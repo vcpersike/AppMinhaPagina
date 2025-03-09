@@ -1,20 +1,22 @@
-﻿@using AppMinhaPagina.Shared.Models
-
-<section class="experience-section">
-    <h2>Experiências</h2>
-    @if (Experiences == null || !Experiences.Any())
+﻿@if (ExperienceList is not null && ExperienceList.Count > 0)
+{
+    @foreach (var exp in ExperienceList)
     {
-        <p>Nenhuma experiência disponível.</p>
+        <div class="experience-card">
+            <h3>@exp.Role</h3>
+            <h4>@exp.Company (@exp.Period)</h4>
+            <p>@exp.Description</p>
+        </div>
     }
-    else
-    {
-        @foreach (var exp in Experiences)
-        {
-            <ExperienceCard Experience="exp" />
-        }
-    }
-</section>
+}
+else
+{
+    <p>⚠️ Nenhuma experiência encontrada.</p>
+}
 
 @code {
-    [Parameter] public List<Experience> Experiences { get; set; } = new();
+    [Parameter] public List<ExperienceModel> ExperienceList { get; set; }
 }
+
+
+

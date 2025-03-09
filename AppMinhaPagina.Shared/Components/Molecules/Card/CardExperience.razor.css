@@ -1,0 +1,10 @@
+﻿.experience-card {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border: 1px solid red; /* Adiciona uma borda vermelha para testar a visibilidade */
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    color: black;
+}

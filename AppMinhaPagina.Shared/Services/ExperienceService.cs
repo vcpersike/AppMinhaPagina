@@ -1,20 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AppMinhaPagina.Shared.Models;
+﻿using AppMinhaPagina.Shared.Models;
+using AppMinhaPagina.Shared.Services.Interface;
+using Microsoft.Extensions.Logging;
 
-namespace AppMinhaPagina.Shared.Services
+public class ExperienceService : IExperienceService
 {
-    public class ExperienceService
-    {
-        public async Task<List<Experience>> GetExperiencesAsync()
-        {
-            await Task.Delay(500); // Simula um delay
+    private readonly ILogger<ExperienceService> _logger;
 
-            return new List<Experience>
-            {
-                new Experience { Empresa = "Ingram Micro", Cargo = "Desenvolvedor Full-Stack", Periodo = "10/23 - Atual", Descricao = "Desenvolvimento de soluções em C#, React e Azure." },
-                new Experience { Empresa = "Totvs", Cargo = "Desenvolvedor Mobile", Periodo = "07/23 - 02/24", Descricao = "Desenvolvimento de apps móveis com Angular 15 e Ionic." }
-            };
-        }
+    public ExperienceService(ILogger<ExperienceService> logger)
+    {
+        _logger = logger;
+    }
+
+    public async Task<List<ExperienceModel>> GetExperiencesAsync()
+    {
+        _logger.LogInformation("Chamando ExperienceService para buscar experiências...");
+
+        return await Task.FromResult(new List<ExperienceModel>
+        {
+            new ExperienceModel { Role = "Desenvolvedor Full-Stack", Company = "Saúde One", Period = "07/22 - 04/23", Description = "Desenvolvimento de soluções para gestão médica." },
+            new ExperienceModel { Role = "Desenvolvedor Mobile", Company = "TOTVS", Period = "07/23 - 02/24", Description = "Criação de apps híbridos com Ionic e Angular." }
+        });
     }
 }

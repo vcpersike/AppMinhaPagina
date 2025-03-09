@@ -1,23 +1,26 @@
 using AppMinhaPagina.Shared.Services;
+using AppMinhaPagina.Shared.Services.Interface;
+using AppMinhaPagina.Shared.ViewModels;
 using AppMinhaPagina.Web.Components;
 using AppMinhaPagina.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Add device-specific services used by the AppMinhaPagina.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
+builder.Services.AddSingleton<IExperienceService, ExperienceService>();
+builder.Services.AddSingleton<IEducationService, EducationService>();
+
+builder.Services.AddTransient<ExperienceViewModel>();
+builder.Services.AddTransient<EducationViewModel>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

@@ -1,32 +1,58 @@
 ﻿@page "/"
-@using AppMinhaPagina.Shared.Components.Organisms.Sections
 
 <h1>Meu Currículo</h1>
 
 <ProfileCard />
+<h2>Experiências</h2>
+@if (experienceViewModel.Experiences is not null && experienceViewModel.Experiences.Count > 0)
+{
+    @foreach (var exp in experienceViewModel.Experiences)
+    {
+        <div class="experience-card">
+            <h3>@exp.Role</h3>
+            <h4>@exp.Company (@exp.Period)</h4>
+            <p>@exp.Description</p>
+        </div>
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma experiência carregada.</p>
+}
 
-<ExperienceSection Experiences="ExperienceVM.Experiences.ToList()" />
+<h2>Educação</h2>
+@if (educationViewModel.EducationList is not null && educationViewModel.EducationList.Count > 0)
+{
+    @foreach (var edu in educationViewModel.EducationList)
+    {
+        <div class="education-card">
+            <h3>@edu.Course</h3>
+            <h4>@edu.Institution (@edu.Period)</h4>
+        </div>
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma formação carregada.</p>
+}
 
-<EducationSection Educations="EducationVM.Educations.ToList()" />
+
 
 <h2>Habilidades</h2>
 <SkillList />
 
 <h1>Textos Recebidos do Backend Mock</h1>
 
-@if (TextVM.Texts.Count == 0)
-{
-    <p>Carregando...</p>
-}
-else
-{ 
-    <ul>
-        @foreach (var text in TextVM.Texts)
-        {
-            <li>
-                <h3>@text.Title</h3>
-                <p>@text.Body</p>
-            </li>
-        }
-    </ul>
+@code {
+    [Inject] private ExperienceViewModel experienceViewModel { get; set; }
+    [Inject] private EducationViewModel educationViewModel { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+
+        // Força a atualização da UI
+        InvokeAsync(StateHasChanged);
+    }
+
 }

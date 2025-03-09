@@ -1,0 +1,38 @@
+﻿@page "/education"
+@inject EducationViewModel ViewModel
+
+<PageTitle>Educação</PageTitle>
+
+<h1>Minha Formação</h1>
+
+<h2>Debugging</h2>
+@if (ViewModel.EducationList is not null)
+{
+    <p>Formações carregadas: @ViewModel.EducationList.Count</p>
+}
+else
+{
+    <p>⚠️ EducationViewModel é nulo!</p>
+}
+
+@if (ViewModel.EducationList is not null && ViewModel.EducationList.Count > 0)
+{
+    @foreach (var edu in ViewModel.EducationList)
+    {
+        <CardEducation Education="edu" />
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma formação disponível.</p>
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        ViewModel.LoadEducation();
+        InvokeAsync(StateHasChanged);
+    }
+}
+

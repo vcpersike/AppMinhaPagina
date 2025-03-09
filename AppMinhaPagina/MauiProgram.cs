@@ -1,5 +1,7 @@
 ﻿using AppMinhaPagina.Services;
 using AppMinhaPagina.Shared.Services;
+using AppMinhaPagina.Shared.Services.Interface;
+using AppMinhaPagina.Shared.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace AppMinhaPagina
@@ -18,7 +20,11 @@ namespace AppMinhaPagina
 
             // Add device-specific services used by the AppMinhaPagina.Shared project
             builder.Services.AddSingleton<IFormFactor, FormFactor>();
+            builder.Services.AddSingleton<IExperienceService, ExperienceService>();
+            builder.Services.AddSingleton<IEducationService, EducationService>();
 
+            builder.Services.AddTransient<ExperienceViewModel>();
+            builder.Services.AddTransient<EducationViewModel>();
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG

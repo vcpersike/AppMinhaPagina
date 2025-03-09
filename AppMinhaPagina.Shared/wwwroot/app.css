@@ -7,3 +7,68 @@ body {
 h3 {
     color: #333;
 }
+
+.experience-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .experience-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .experience-card .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .experience-card h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin: 0;
+    }
+
+    .experience-card h4 {
+        font-size: 1.2rem;
+        color: #555;
+        margin: 0;
+    }
+
+    .experience-card .period {
+        margin-top: 0.5rem;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .experience-card .description {
+        margin-top: 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #666;
+    }
+
+    .experience-card .technologies {
+        margin-top: 1rem;
+    }
+
+        .experience-card .technologies ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .experience-card .technologies li {
+            background-color: #f1f1f1;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #444;
+        }

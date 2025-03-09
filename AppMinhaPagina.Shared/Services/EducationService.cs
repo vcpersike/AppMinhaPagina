@@ -1,32 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AppMinhaPagina.Shared.Models;
+﻿using AppMinhaPagina.Shared.Models;
+using AppMinhaPagina.Shared.Services.Interface;
+using Microsoft.Extensions.Logging;
 
-namespace AppMinhaPagina.Shared.Services
+public class EducationService : IEducationService
 {
-    public class EducationService
-    {
-        public async Task<List<Education>> GetEducationsAsync()
-        {
-            await Task.Delay(500); // Simula um pequeno delay de rede
+    private readonly ILogger<EducationService> _logger;
 
-            return new List<Education>
-            {
-                new Education
-                {
-                    Instituicao = "Faculdade Descomplica",
-                    Curso = "Ciências da Computação",
-                    Periodo = "2022 - 2026",
-                    Descricao = "Curso EAD voltado para desenvolvimento Full-Stack."
-                },
-                new Education
-                {
-                    Instituicao = "RecodePro",
-                    Curso = "Programação FullStack",
-                    Periodo = "2021 - 2022",
-                    Descricao = "Curso intensivo de 520 horas sobre desenvolvimento Full-Stack."
-                }
-            };
-        }
+    public EducationService(ILogger<EducationService> logger)
+    {
+        _logger = logger;
+    }
+
+    public async Task<List<EducationModel>> GetEducationAsync()
+    {
+        _logger.LogInformation("Chamando EducationService para buscar formações...");
+
+        return await Task.FromResult(new List<EducationModel>
+        {
+            new EducationModel { Institution = "Faculdade Descomplica", Course = "Ciências da Computação", Period = "2022 - 2026" },
+            new EducationModel { Institution = "RecodePro", Course = "Programação FullStack", Period = "2021 - 2022" }
+        });
     }
 }

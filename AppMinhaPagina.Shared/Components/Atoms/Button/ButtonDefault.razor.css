@@ -1,5 +1,5 @@
-﻿.default-button {
-    padding: 10px 15px;
+﻿.btn-default {
+    padding: 10px 20px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -7,6 +7,6 @@
     cursor: pointer;
 }
 
-    .default-button:hover {
+    .btn-default:hover {
         background-color: #0056b3;
     }
