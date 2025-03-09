@@ -1,0 +1,17 @@
+﻿<h2>Experiências</h2>
+
+@if (Experiences is not null && Experiences.Count > 0)
+{
+    @foreach (var exp in Experiences)
+    {
+        <CardExperience Experience="@exp" />
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma experiência disponível.</p>
+}
+
+@code {
+    [Parameter] public List<ExperienceModel> Experiences { get; set; }
+}

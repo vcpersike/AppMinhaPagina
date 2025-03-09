@@ -1,8 +1,5 @@
-﻿<h2>Debugging - CardExperience</h2>
-@if (Experience is not null)
+﻿@if (Experience is not null)
 {
-    <p>✅ Dados recebidos no `CardExperience`: @Experience.Role, @Experience.Company</p>
-
     <div class="experience-card">
         <h3>@Experience.Role</h3>
         <h4>@Experience.Company (@Experience.Period)</h4>
@@ -13,7 +10,6 @@ else
 {
     <p>⚠️ Erro: Nenhuma experiência recebida.</p>
 }
-
 @code {
     [Parameter] public ExperienceModel Experience { get; set; }
 }

@@ -9,27 +9,35 @@ public class EducationViewModel : INotifyPropertyChanged
 {
     private readonly IEducationService _educationService;
 
-    private List<EducationModel> _educationList;
+    private List<EducationModel> _educationList = new();
     public List<EducationModel> EducationList
     {
         get => _educationList;
-        set { _educationList = value; OnPropertyChanged(nameof(EducationList)); }
+        set
+        {
+            if (_educationList != value)
+            {
+                _educationList = value;
+                OnPropertyChanged(nameof(EducationList));
+            }
+        }
     }
 
     public EducationViewModel(IEducationService educationService)
     {
         _educationService = educationService;
-        LoadEducation();
     }
 
-    public async void LoadEducation()
+    public async Task LoadEducationAsync()
     {
-        EducationList = await _educationService.GetEducationAsync();
-        OnPropertyChanged(nameof(EducationList));
+        var data = await _educationService.GetEducationAsync();
+        if (data is not null && data.Count > 0)
+        {
+            EducationList = data; // Atualiza a UI automaticamente
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
-

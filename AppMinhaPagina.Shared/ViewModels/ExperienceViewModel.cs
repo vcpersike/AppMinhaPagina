@@ -3,29 +3,38 @@
 using System.ComponentModel;
 using AppMinhaPagina.Shared.Models;
 using AppMinhaPagina.Shared.Services.Interface;
-using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 public class ExperienceViewModel : INotifyPropertyChanged
 {
     private readonly IExperienceService _experienceService;
 
-    private List<ExperienceModel> _experiences;
+    private List<ExperienceModel> _experiences = new();
     public List<ExperienceModel> Experiences
     {
         get => _experiences;
-        set { _experiences = value; OnPropertyChanged(nameof(Experiences)); }
+        set
+        {
+            if (_experiences != value)
+            {
+                _experiences = value;
+                OnPropertyChanged(nameof(Experiences));
+            }
+        }
     }
 
     public ExperienceViewModel(IExperienceService experienceService)
     {
         _experienceService = experienceService;
-        LoadExperiences();
     }
 
-    public async void LoadExperiences()
+    public async Task LoadExperiencesAsync()
     {
-        Experiences = await _experienceService.GetExperiencesAsync();
-        OnPropertyChanged(nameof(Experiences));
+        var data = await _experienceService.GetExperiencesAsync();
+        if (data is not null && data.Count > 0)
+        {
+            Experiences = data; // Atualiza a UI automaticamente
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

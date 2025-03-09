@@ -1,0 +1,18 @@
+﻿
+
+<h2>Educação</h2>
+
+@if (EducationItems is not null && EducationItems.Count > 0)
+{
+    @foreach (var edu in EducationItems)
+    {
+        <CardEducation Education="@edu" />
+    }
+}
+else
+{
+    <p>⚠️ Nenhuma formação disponível.</p>
+}
+@code {
+    [Parameter] public List<EducationModel> EducationItems { get; set; }
+}

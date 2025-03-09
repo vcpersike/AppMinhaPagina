@@ -5,34 +5,17 @@
 
 <h1>Minha Formação</h1>
 
-<h2>Debugging</h2>
-@if (ViewModel.EducationList is not null)
-{
-    <p>Formações carregadas: @ViewModel.EducationList.Count</p>
-}
-else
-{
-    <p>⚠️ EducationViewModel é nulo!</p>
-}
+<EducationList EducationItems="@ViewModel.EducationList" />
 
-@if (ViewModel.EducationList is not null && ViewModel.EducationList.Count > 0)
-{
-    @foreach (var edu in ViewModel.EducationList)
-    {
-        <CardEducation Education="edu" />
-    }
-}
-else
-{
-    <p>⚠️ Nenhuma formação disponível.</p>
-}
+<div class="navigation-buttons">
+    <NavigationButton Label="Voltar para Home" Url="/" />
+    <NavigationButton Label="Ver Experiências" Url="/experience" />
+</div>
 
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
-        ViewModel.LoadEducation();
+        await ViewModel.LoadEducationAsync();
         InvokeAsync(StateHasChanged);
     }
 }
-

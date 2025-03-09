@@ -1,24 +1,7 @@
-﻿@inject NavigationManager Navigation
-
-<button class="nav-btn" @onclick="Navigate">
-    @Text
-</button>
-
+﻿<a href="@Url" class="navigation-button">
+    @Label
+</a>
 @code {
-    [Parameter] public string Text { get; set; } = "Navegar";
-    [Parameter] public string Url { get; set; } = "/"; // Valor padrão
-
-    private void Navigate()
-    {
-        Console.WriteLine($"🔵 Navegando para: {Url}");
-
-        if (!string.IsNullOrEmpty(Url))
-        {
-            Navigation.NavigateTo(Url, forceLoad: true);
-        }
-        else
-        {
-            Console.WriteLine("⚠️ URL vazia!");
-        }
-    }
+    [Parameter] public string Label { get; set; } = "Ir";
+    [Parameter] public string Url { get; set; } = "/";
 }

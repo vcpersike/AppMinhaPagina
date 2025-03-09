@@ -1,7 +1,23 @@
 ﻿@page "/contato"
+@inject ContactViewModel ViewModel
 
 <h1>Contato</h1>
 
-<p>Email: <a href="mailto:dev.victor.persike@gmail.com">dev.victor.persike@gmail.com</a></p>
-<p>Telefone: +55 11 95705-7466</p>
-<p>Site: <a href="https://www.victorpersike.dev.br">victorpersike.dev.br</a></p>
+@if (ViewModel.Contact is not null)
+{
+    <p>Email: <a href="mailto:@ViewModel.Contact.Email">@ViewModel.Contact.Email</a></p>
+    <p>Telefone: @ViewModel.Contact.Phone</p>
+    <p>Site: <a href="@ViewModel.Contact.Website">@ViewModel.Contact.Website</a></p>
+}
+else
+{
+    <p>⚠️ Carregando dados de contato...</p>
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ViewModel.LoadContactAsync();
+        InvokeAsync(StateHasChanged);
+    }
+}

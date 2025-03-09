@@ -12,7 +12,9 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
 builder.Services.AddSingleton<IExperienceService, ExperienceService>();
 builder.Services.AddSingleton<IEducationService, EducationService>();
+builder.Services.AddSingleton<IContactService, ContactService>();
 
+builder.Services.AddTransient<ContactViewModel>();
 builder.Services.AddTransient<ExperienceViewModel>();
 builder.Services.AddTransient<EducationViewModel>();
 
