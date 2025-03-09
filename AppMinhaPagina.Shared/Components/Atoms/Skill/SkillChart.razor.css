@@ -1,0 +1,40 @@
+﻿.skill-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+    .skill-chart svg {
+        transform: rotate(0deg);
+    }
+
+.skill-bg {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3;
+    opacity: 0.3;
+}
+
+.skill-progress {
+    fill: none;
+    stroke: #FFD700;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+text {
+    fill: #FFD700;
+    font-size: 0.5rem;
+    font-weight: bold;
+}
+
+p {
+    color: #FFD700;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}

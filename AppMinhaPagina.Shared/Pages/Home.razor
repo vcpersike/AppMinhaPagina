@@ -1,8 +1,7 @@
 ﻿@page "/"
 
-<h1>Meu Currículo</h1>
-
 <ProfileCard />
+
 <NavigationButton Label="Ver Experiências" Url="/experience" />
 <NavigationButton Label="Ver Educação" Url="/education" />
 <NavigationButton Label="Ver Contato" Url="/contato" />
@@ -11,9 +10,13 @@
 <EducationList EducationItems="@educationViewModel.EducationList" />
 
 <h2>Habilidades</h2>
-<SkillList />
+<div class="skills">
+    <SkillChart SkillName="C#" SkillLevel="60" />
+    <SkillChart SkillName="React" SkillLevel="80" />
+    <SkillChart SkillName="Blazor" SkillLevel="50" />
+</div>
 
-<h1>Textos Recebidos do Backend Mock</h1>
+
 
 @code {
     [Inject] private ExperienceViewModel experienceViewModel { get; set; }
