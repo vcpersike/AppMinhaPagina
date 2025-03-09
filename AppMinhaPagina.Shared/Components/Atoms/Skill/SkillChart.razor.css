@@ -3,13 +3,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
     font-family: Arial, sans-serif;
 }
 
-    .skill-chart svg {
-        transform: rotate(0deg);
+    .skill-chart text {
+        fill: #FFD700;
+        font-size: 0.5rem;
+        font-weight: 900;
+        text-anchor: middle;
+        dominant-baseline: middle;
     }
+        
 
 .skill-bg {
     fill: none;
