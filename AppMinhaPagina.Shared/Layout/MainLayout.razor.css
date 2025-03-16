@@ -1,11 +1,5 @@
 .main-layout {
-    max-width: 900px;
+    max-width: 100%;
     margin: auto;
     padding: 20px;
-}
-
-nav {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
 }

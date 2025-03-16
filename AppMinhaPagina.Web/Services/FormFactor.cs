@@ -1,4 +1,4 @@
-using AppMinhaPagina.Shared.Services;
+using AppMinhaPagina.Shared.Services.Interface;
 
 namespace AppMinhaPagina.Web.Services
 {
