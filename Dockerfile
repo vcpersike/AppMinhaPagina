@@ -55,7 +55,7 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 ENV COMPlus_TC_QuickJitForLoops=1
 ENV COMPlus_ReadyToRun=1
 
-EXPOSE 8080
+EXPOSE 7007
 
 # Define o comando de inicialização
 ENTRYPOINT ["./AppMinhaPagina.Web"]
