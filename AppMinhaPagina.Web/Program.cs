@@ -62,9 +62,12 @@ builder.WebHost.ConfigureKestrel(options =>
 
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
-    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor |
+                               ForwardedHeaders.XForwardedProto |
+                               ForwardedHeaders.XForwardedHost;
+    // Confiar em todos os proxies na rede interna do Docker
     options.KnownNetworks.Clear();
-    options.KnownProxies.Clear(); // IP interno do Traefik na rede overlay
+    options.KnownProxies.Clear();
 });
 
 var app = builder.Build();
