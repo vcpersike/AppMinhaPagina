@@ -63,7 +63,8 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-    options.KnownProxies.Add(IPAddress.Parse("10.0.1.199")); // IP interno do Traefik na rede overlay
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear(); // IP interno do Traefik na rede overlay
 });
 
 var app = builder.Build();

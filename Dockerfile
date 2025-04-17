@@ -26,6 +26,7 @@ RUN dotnet publish "AppMinhaPagina.Web/AppMinhaPagina.Web.csproj" \
     /p:EnableCompressionInSingleFile=true \
     /p:StripSymbols=true
 
+    
 # Etapa final com Alpine mais enxuto
 FROM alpine:3.19 AS final
 WORKDIR /app
