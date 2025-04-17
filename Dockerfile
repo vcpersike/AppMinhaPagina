@@ -48,7 +48,7 @@ RUN find . -name "*.pdb" -type f -delete && \
     find ./wwwroot -name "*.map" -type f -delete
 
 # Configura a aplicação
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_URLS=http://+:7007
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENV ASPNETCORE_ENVIRONMENT=Production
