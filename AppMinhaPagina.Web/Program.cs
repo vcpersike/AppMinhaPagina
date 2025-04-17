@@ -33,7 +33,8 @@ builder.Services.AddResponseCompression(opts =>
 });
 
 // Configuração de anti-forgery
-builder.Services.AddAntiforgery(options => {
+builder.Services.AddAntiforgery(options =>
+{
     options.HeaderName = "X-CSRF-TOKEN";
     options.Cookie.Name = "X-CSRF-TOKEN";
     options.Cookie.SecurePolicy = CookieSecurePolicy.None;
@@ -53,13 +54,21 @@ builder.Services.AddTransient<ExperienceViewModel>();
 builder.Services.AddTransient<EducationViewModel>();
 
 // Ajusta configurações para melhor desempenho em contêiner
-builder.WebHost.ConfigureKestrel(options => {
+builder.WebHost.ConfigureKestrel(options =>
+{
     options.AddServerHeader = false;
     options.Limits.MaxRequestBodySize = 10 * 1024 * 1024; // 10MB
 });
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownProxies.Add(IPAddress.Parse("10.0.1.199")); // IP interno do Traefik na rede overlay
+});
+
 var app = builder.Build();
 
+app.UseForwardedHeaders();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -85,7 +94,7 @@ if (app.Environment.IsDevelopment())
     app.Use(async (context, next) =>
     {
         var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-        logger.LogInformation("Request Path: {Path}, Method: {Method}", 
+        logger.LogInformation("Request Path: {Path}, Method: {Method}",
             context.Request.Path, context.Request.Method);
         await next.Invoke();
     });
