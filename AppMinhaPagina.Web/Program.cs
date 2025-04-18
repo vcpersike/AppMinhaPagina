@@ -3,6 +3,8 @@ using AppMinhaPagina.Web.Components;
 using AppMinhaPagina.Web.Services;
 using AppMinhaPagina.Shared.Services.Interface;
 using AppMinhaPagina.Shared.ViewModels;
+using Microsoft.AspNetCore.HttpOverrides;
+
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
