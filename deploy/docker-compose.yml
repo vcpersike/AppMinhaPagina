@@ -6,15 +6,20 @@ services:
     container_name: appminhapagina
     restart: always
     networks:
-      - web
+      - traefik_public
+    ports:
+      - "8086:7007"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.app.rule=Host(`victorpersike.dev.br`)"
-      - "traefik.http.services.app.loadbalancer.server.port=8080"
+      - "traefik.http.services.app.loadbalancer.server.port=8086"
       - "traefik.http.routers.app.entrypoints=websecure"
-      - "traefik.http.routers.app.tls.certresolver=myresolver"
-      - "traefik.docker.network=web"
+      - "traefik.http.routers.app.tls.certresolver=le"
+      - "traefik.docker.network=traefik_public"
+      - "traefik.http.middlewares.app-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.app.middlewares=app-redirect"
+      - "traefik.http.routers.app.middlewares=app-redirect@docker"
 
 networks:
-  web:
+  traefik_public:
     external: true
