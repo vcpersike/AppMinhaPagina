@@ -12,7 +12,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.app.rule=Host(`victorpersike.dev.br`)"
-      - "traefik.http.services.app.loadbalancer.server.port=8086"
+      - "traefik.http.services.app.loadbalancer.server.port=7007"
       - "traefik.http.routers.app.entrypoints=websecure"
       - "traefik.http.routers.app.tls.certresolver=le"
       - "traefik.docker.network=traefik_traefik_public"
