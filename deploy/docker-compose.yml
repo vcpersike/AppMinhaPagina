@@ -19,7 +19,6 @@ services:
       - "traefik.http.middlewares.app-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.app.middlewares=app-redirect"
       - "traefik.http.routers.app.middlewares=app-redirect@docker"
-
 networks:
   traefik_traefik_public:
     external: true
