@@ -37,6 +37,16 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      # 5) Disparar webhook do Portainer
+      - name: Trigger Portainer Stack update
+        env:
+          WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK }}
+        run: |
+          echo "🔔 Chamando webhook do Portainer..."
+          curl -X POST "$WEBHOOK_URL" \
+            --fail \
+            --show-error \
+            --silent
       # 5) Preparar SSH (criar ~/.ssh/id_rsa, permissões, known_hosts)
       # - name: Setup SSH
       #   run: |
