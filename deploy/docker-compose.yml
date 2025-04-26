@@ -1,8 +1,8 @@
-version: "3.7"
+version: "3.8"
 
 services:
   app:
-    image: devvictorpersike/appminhapagina
+    image: devvictorpersike/appminhapagina:latest
     container_name: appminhapagina
     restart: always
     networks:
