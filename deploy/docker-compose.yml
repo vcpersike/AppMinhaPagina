@@ -19,6 +19,12 @@ services:
       - "traefik.http.middlewares.app-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.app.middlewares=app-redirect"
       - "traefik.http.routers.app.middlewares=app-redirect@docker"
+    logging:
+     driver: "json-file"
+     options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   traefik_traefik_public:
     external: true
